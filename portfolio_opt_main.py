@@ -65,11 +65,11 @@ if __name__ =="__main__":
     end_date = datetime.today()
     start_date = end_date-timedelta(days=365*period)
     if exchange=="NS":
-        df_master = pd.read_csv("/Users/nayanchoudhary/Documents/Portfolio Optimization/StocksTraded.csv")
+        df_master = pd.read_csv("./StocksTraded.csv")
         ticker_col = "Symbol "
         company_col = None
     else:
-        df_master = pd.read_excel("/Users/nayanchoudhary/Documents/Portfolio Optimization/Publicly_Traded_Companies_US_NYSE_NASADAQ_AMEX.xlsx")
+        df_master = pd.read_excel("./Publicly_Traded_Companies_US_NYSE_NASADAQ_AMEX.xlsx")
         ticker_col = "symbol"
         company_col = "name"
     if choose_random:
@@ -82,4 +82,5 @@ if __name__ =="__main__":
         adj_CPdf[ticker] = ticker_data['Adj Close']
     adj_CPdf.dropna(axis=1, how='all', inplace=True)
     final_output_format = OptimizePortfolio(adj_CPdf)
+    print(final_output_format)
     
